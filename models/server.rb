@@ -16,8 +16,8 @@ class Server
   def fetch(receiver, email_id)
     email = Repository.for(:emails).find_by_id(email_id)
     Repository.for(:user_email_refereces).delete_reference(receiver, email_id)
-    email.read!
-    Repository.for(:emails).delete(email) if email.all_users_read_it?
+    email.download!
+    Repository.for(:emails).delete(email) if email.all_users_downloaded?
     email
   end
 
