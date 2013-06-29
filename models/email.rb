@@ -6,13 +6,22 @@ class Email
   attr_reader :subject, :content, :receivers, :date, :downloaded_times
   attr_accessor :email_id
 
-  def initialize(receivers, subject, content)
+  def initialize(receivers, subject, content, date = Time.now, email_id = nil)
     @receivers = receivers
     @subject = subject
     @content = content
-    @date = Time.now
+    @date = date
     @downloaded_times = 0
-    @email_id = generate_hash
+    @email_id = email_id || generate_hash
+  end
+
+  def self.new_from_hash(hash)
+    receivers = hash["receivers"]
+    subject = hash["subject"]
+    content = hash["content"]
+    date = hash["date"]
+    email_id = hash["_id"]
+    Email.new(receivers, subject, content, date, email_id)
   end
 
   def all_users_downloaded?

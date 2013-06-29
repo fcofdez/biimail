@@ -23,7 +23,7 @@ module DatabaseRepository
     end
 
     def find_by_id(id)
-      @records.find("_id" => id)
+      Email.new_from_hash(@records.find("_id" => id).to_a[0])
     end
   end
 
