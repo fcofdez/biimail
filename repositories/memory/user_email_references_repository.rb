@@ -1,7 +1,7 @@
 module MemoryRepository
   class UserEmailReferencesRepository
     def initialize
-      @records = {}
+      @records = Hash.new([])
     end
 
     def save(email)
