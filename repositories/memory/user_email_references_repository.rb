@@ -4,12 +4,13 @@ module MemoryRepository
       @records = Hash.new([])
     end
 
-    def save(email)
-      @records[email.email_id]
+    def save(email, reference)
+      @records[email] = reference
       email
     end
 
     def update(email, new_reference)
+      @records[email] = [] if @records[email] == []
       @records[email] << new_reference
     end
 

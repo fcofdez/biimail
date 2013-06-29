@@ -3,7 +3,7 @@ require 'digest'
 
 class Email
 
-  attr_reader :suject, :content, :receivers, :date, :downloaded_times, :email_id
+  attr_reader :subject, :content, :receivers, :date, :downloaded_times, :email_id
 
   def initialize(receivers, subject, content)
     @receivers = receivers
