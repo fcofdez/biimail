@@ -6,8 +6,14 @@ module MemoryRepository
     end
 
     def save(email)
-      @records[email.email_id]
+      @records[email.email_id] = email
       email
+    end
+
+    def each
+      @records.each do |key, value|
+        yield value
+      end
     end
 
     def delete(email)

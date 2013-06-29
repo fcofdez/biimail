@@ -1,3 +1,7 @@
+require_relative '../repositories/memory/emails_repository'
+require_relative '../repositories/memory/user_email_references_repository'
+require_relative '../repositories/repository'
+
 class Server
 
   def initialize
@@ -9,24 +13,39 @@ class Server
     Repository.for(:emails).save(email)
 
     email.receivers.each do |receiver|
-      Repository.for(:user_email_refereces).update(receiver, email.email_id)
+      Repository.for(:user_email_references).update(receiver, email.email_id)
+    end
+  end
+
+  def delete_old_mails
+    older_date = Date.civil(Date.today.year, Date.today.month - 3, Date.today.day)
+    Repository.for(:emails).each do |email|
+      delete_email(email) if email.date <= older_date
     end
   end
 
   def fetch(receiver, email_id)
     email = Repository.for(:emails).find_by_id(email_id)
-    Repository.for(:user_email_refereces).delete_reference(receiver, email_id)
+    Repository.for(:user_email_references).delete_reference(receiver, email_id)
     email.download!
     Repository.for(:emails).delete(email) if email.all_users_downloaded?
     email
   end
 
   def has_new_mail?(receiver)
-    Repository.for(:user_email_refereces).find_by_email(receiver).length > 0
+    Repository.for(:user_email_references).find_by_email(receiver).length > 0
   end
 
-  def new_mails
-    Repository.for(:user_email_refereces).find_by_email(receiver)
+  def new_mails(receiver)
+    Repository.for(:user_email_references).find_by_email(receiver)
   end
 
+  private
+
+  def delete_email(email)
+    email.receivers.each do |receiver|
+      Repository.for(:user_email_refereces).delete_reference(receiver, email.email_id)
+    end
+    Repository.for(:emails).delete(email)
+  end
 end

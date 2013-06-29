@@ -18,13 +18,13 @@ class Email
     @downloaded_times == @receivers.length
   end
 
-  def read!
+  def download!
     @downloaded_times += 1
   end
 
   private
 
   def generate_hash
-    Digest::SHA1.base64digest(suject + DateTime.now.to_s)
+    Digest::SHA1.base64digest(@subject + DateTime.now.to_s)
   end
 end
