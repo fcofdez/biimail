@@ -23,4 +23,8 @@ describe Email do
     end
   end
 
+  it "return hash" do
+    subject.to_hash.class.should == Hash
+  end
+
 end

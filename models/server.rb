@@ -1,16 +1,18 @@
 require_relative '../repositories/memory/emails_repository'
+require_relative '../repositories/databases/documents_repository'
 require_relative '../repositories/memory/user_email_references_repository'
 require_relative '../repositories/repository'
 
 class Server
 
   def initialize
-    Repository.register(:emails, MemoryRepository::EmailRepository.new)
+    Repository.register(:emails, DatabaseRepository::DocumentRepository.new)
     Repository.register(:user_email_references, MemoryRepository::UserEmailReferencesRepository.new)
   end
 
   def send(email)
-    Repository.for(:emails).save(email)
+    id = Repository.for(:emails).save(email)
+    email.email_id = id
 
     email.receivers.each do |receiver|
       Repository.for(:user_email_references).update(receiver, email.email_id)
