@@ -20,9 +20,9 @@ class Server
   end
 
   def delete_old_mails
-    older_date = Date.civil(Date.today.year, Date.today.month - 3, Date.today.day)
-    Repository.for(:emails).each do |email|
-      delete_email(email) if email.date <= older_date
+    older_date = Time.new(Date.today.year, Date.today.month - 3, Date.today.day)
+    Repository.for(:emails).outdated_emails(older_date).each do |email|
+      delete_email(email)
     end
   end
 
@@ -47,7 +47,7 @@ class Server
 
   def delete_email(email)
     email.receivers.each do |receiver|
-      Repository.for(:user_email_refereces).delete_reference(receiver, email.email_id)
+      Repository.for(:user_email_references).delete_reference(receiver, email.email_id)
     end
     Repository.for(:emails).delete(email)
   end

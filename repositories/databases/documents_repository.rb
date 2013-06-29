@@ -18,6 +18,10 @@ module DatabaseRepository
       end
     end
 
+    def outdated_emails(date)
+      @records.find("date" => {"$lte" => date}).to_a.map { |email| Email.new_from_hash(email) }
+    end
+
     def delete(email)
       @records.remove("_id" => email.email_id)
     end
