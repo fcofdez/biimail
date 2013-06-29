@@ -7,7 +7,7 @@ module MemoryRepository
 
     def save(email)
       @records[email.email_id] = email
-      email
+      email.email_id
     end
 
     def each

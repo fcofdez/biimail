@@ -30,6 +30,7 @@ class Server
     email = Repository.for(:emails).find_by_id(email_id)
     Repository.for(:user_email_references).delete_reference(receiver, email_id)
     email.download!
+    Repository.for(:emails).update_counter(email)
     Repository.for(:emails).delete(email) if email.all_users_downloaded?
     email
   end

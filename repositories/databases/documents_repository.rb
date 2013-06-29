@@ -13,13 +13,18 @@ module DatabaseRepository
     end
 
     def each
-      @records.each do |key, value|
-        yield value
+      @records.find.each do |value|
+        yield Email.new_from_hash(value)
       end
     end
 
     def delete(email)
-      @records.delete("_id" => email.email_id)
+      @records.remove("_id" => email.email_id)
+    end
+
+    def update_counter(email)
+      counter = { "downloaded_times" => email.downloaded_times}
+      @records.update({"_id" => email.email_id}, {"$set" => counter})
     end
 
     def find_by_id(id)

@@ -16,3 +16,4 @@ client.download_new_emails
 puts client.downloaded_emails.inspect
 
 puts server.has_new_mail?("test2@test.com")
+server.delete_old_mails
