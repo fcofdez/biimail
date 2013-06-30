@@ -37,6 +37,9 @@ gem 'bson'
 gem 'bson_ext'
 
 gem 'redis'
+
+gem 'faraday_middleware'
+gem 'hashie'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

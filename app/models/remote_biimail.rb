@@ -1,4 +1,4 @@
-module RemoteBiiMail
+module RemoteBiimail
 
 
   # Use Mash to get hash as an objet and handle
@@ -44,8 +44,8 @@ module RemoteBiiMail
       raw ? response.env[:raw_body] : response.body
     end
 
-    def parse_url(url)
-      get("parser", url: url)
+    def fetch_mail(receiver, id)
+      get("emails/#{id}")
     end
   end
 
