@@ -149,6 +149,12 @@ Nos situamos en el directorio de la aplicación y ejecutamos
   bundle install
   rails s
 
+Comprobación de correos sin leer
+-----
+En la clase Server hay un método llamado delete_old_mails que se encarga
+de borrar los mensajes antiguos. Habría que crear una tarea Cron que lo
+llamase diariamente.
+
 Tests
 -----
 En la carpeta specs/models hay unos test básicos de la aplicación.
