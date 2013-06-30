@@ -166,3 +166,6 @@ Código ajeno utilizado
 Inspiración para usar el patrón repository de
 http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html
 
+Repositorio servidor distribuido
+--------------------------------
+https://github.com/fcofdez/biimailserver
