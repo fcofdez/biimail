@@ -58,7 +58,7 @@ module RemoteBiimail
     end
 
     def fetch_mail(receiver, id)
-      response = get("emails/#{id}")
+      response = get("emails/#{id}", receiver: receiver)
       Email.new_from_response(response)
     end
 

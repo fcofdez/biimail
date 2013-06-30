@@ -1,2 +1,2 @@
 $repository = Repository.new
-$server = Server.new
+$server = RemoteServer.new

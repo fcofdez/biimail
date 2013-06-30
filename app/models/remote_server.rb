@@ -4,7 +4,7 @@ class RemoteServer
   end
 
   def fetch(receiver, email_id)
-    RemoteBiimail.fetch_mail(receiver, email_id)
+    RemoteBiimail.fetch_mail(receiver, email_id.to_s)
   end
 
   def has_new_mail?(receiver)
