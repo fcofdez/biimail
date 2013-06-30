@@ -3,7 +3,7 @@ require 'mongo'
 module DatabaseRepository
 
   class DocumentRepository
-    def initialize
+    def initialize(db = "emails", collection = "emails")
       @client = Mongo::MongoClient.new
       @records = @client.db("emails").collection("emails")
     end
