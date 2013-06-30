@@ -50,7 +50,8 @@ Biiclient::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'welcome#index'
 
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:create]
+  match 'sign_out' => 'sessions#destroy', as: "sign_out"
 
   resources :emails do
     collection do
