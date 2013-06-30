@@ -47,6 +47,7 @@ module RemoteBiimail
     def get(path, params = nil)
       raw = params && params.delete(:raw)
       response = super
+      puts response
       raw ? response.env[:raw_body] : response.body
     end
 
@@ -62,11 +63,11 @@ module RemoteBiimail
     end
 
     def has_new_mail?(receiver)
-      get("emails/has_new_mail", receiver: receiver)
+      get("emails/has_new_mail", receiver: receiver).new_mails
     end
 
     def new_mails(receiver)
-      get("emails/new_mails", receiver: receiver)
+      get("emails/new_mails", receiver: receiver).map { |id| BSON::ObjectId(id) }
     end
 
     def send(email)
