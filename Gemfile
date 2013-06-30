@@ -30,27 +30,21 @@ gem 'jquery-rails'
 
 gem 'haml'
 
-gem 'rspec'
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
+#MongoDB ruby driver
 gem 'mongo'
 
+#Mongodb documents format
 gem 'bson'
 gem 'bson_ext'
 
+#Redis driver
 gem 'redis'
 
+#Http requests
 gem 'faraday_middleware'
 gem 'hashie'
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

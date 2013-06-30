@@ -1,7 +1,8 @@
 class Client
 
-  def initialize(email_address, server)
-    $repository.register(:user_emails, Repositories::Databases::Documents.new("emails", email_address))
+  def initialize(email_address, server, 
+                 emails_repo = Repositories::Databases::Documents.new("emails", email_address))
+    $repository.register(:user_emails, emails_repo)
     @email_address = email_address
     @server = server
   end

@@ -1,6 +1,5 @@
 module RemoteBiimail
 
-
   # Use Mash to get hash as an objet and handle
   # better on application
   class Mashify < Faraday::Response::Middleware
@@ -16,7 +15,7 @@ module RemoteBiimail
   module Connection
     def connection
       @connection ||= begin
-                        conn = Faraday.new('http://localhost:4001/') do |c|
+                        conn = Faraday.new(CONFIG["remote_url"]) do |c|
 
                           c.response :mashify
                           c.response :json, content_type: 'application/json'

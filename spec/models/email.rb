@@ -1,4 +1,4 @@
-require_relative '../models/email'
+require_relative '../../app/models/email'
 
 describe Email do
   subject { Email.new("me@me.com", ["test@test.com"], "Subject", "body test") }

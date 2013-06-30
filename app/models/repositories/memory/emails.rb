@@ -23,6 +23,9 @@ module Repositories
         end.values
       end
 
+      def update_counter(email)
+      end
+
       def delete(email)
         @records.delete(email.email_id)
       end

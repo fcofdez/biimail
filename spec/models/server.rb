@@ -1,9 +1,17 @@
-require_relative '../models/server'
-require_relative '../models/email'
+require_relative '../../app/models/client'
+require_relative '../../app/models/server'
+require_relative '../../app/models/repository'
+require_relative '../../app/models/email'
+require_relative '../../app/models/repositories/memory/emails'
+require_relative '../../app/models/repositories/memory/user_email_references'
 
 describe Server do
 
-  subject { Server.new }
+  before do
+    $repository = Repository.new
+  end
+  subject { Server.new(Repositories::Memory::Emails.new,
+                       Repositories::Memory::UserEmailReferences.new) }
 
   it "Store emails" do
     subject.send(Email.new("me@me.com", ["test@test.com"], "test", "body test"))

@@ -1,8 +1,10 @@
 class Server
 
-  def initialize
-    $repository.register(:emails, Repositories::Databases::Documents.new)
-    $repository.register(:user_email_references, Repositories::Databases::RedisReferences.new)
+  def initialize(emails_repo = Repositories::Databases::Documents.new,
+                 references_repo = Repositories::Databases::RedisReferences.new)
+
+    $repository.register(:emails, emails_repo)
+    $repository.register(:user_email_references, references_repo)
   end
 
   def send(email)
