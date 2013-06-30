@@ -1,5 +1,9 @@
 .hero-unit
-  %h1 Hello world!
-  %p
-    %a.btn.btn-primary.btn-large{href: ""} Login!
-
+  %h2 Biimail system
+  = form_tag session_path do
+    = label_tag "Email"
+    = text_field_tag :email
+    = submit_tag "Login", class: "btn"
+  -#%form.navbar-form.pull-left
+    -#%input.span2{:type => "text"}/
+    -#%button.btn{:type => "submit"} Login

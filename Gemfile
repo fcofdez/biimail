@@ -30,6 +30,13 @@ gem 'jquery-rails'
 
 gem 'haml'
 
+gem 'rspec'
+gem 'mongo'
+
+gem 'bson'
+gem 'bson_ext'
+
+gem 'redis'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
