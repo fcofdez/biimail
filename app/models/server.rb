@@ -1,7 +1,7 @@
-require_relative '../repositories/memory/emails_repository'
-require_relative '../repositories/databases/documents_repository'
-require_relative '../repositories/memory/user_email_references_repository'
-require_relative '../repositories/repository'
+require_relative '../../lib/repositories/memory/emails_repository'
+require_relative '../../lib/repositories/databases/documents_repository'
+require_relative '../../lib/repositories/memory/user_email_references_repository'
+require_relative '../../lib/repositories/repository'
 
 class Server
 
