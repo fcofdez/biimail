@@ -11,6 +11,10 @@ class EmailsController < ApplicationController
   def new
   end
 
+  def show
+    @email = @client.find_email_by_id(BSON::ObjectId(params[:id]))
+  end
+
   def create
     receivers = params[:email].split(",")
     @client.send_email(receivers, params[:subject], params[:message])

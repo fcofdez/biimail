@@ -13,6 +13,10 @@ class Client
     end
   end
 
+  def find_email_by_id(id)
+    Repository.for(:user_emails).find_by_id(id)
+  end
+
   def downloaded_emails
     downloaded_emails = []
     Repository.for(:user_emails).each do |email|

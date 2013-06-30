@@ -11,6 +11,6 @@
     %th Subject
     - @emails.each do |email|
       %tr
-        %td= email.subject
-        %td= email.subject
+        %td= email.receivers
+        %td= link_to email.subject, email_path(email.email_id)
 
