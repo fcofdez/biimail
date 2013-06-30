@@ -40,13 +40,13 @@ Por ejemplo:
 
   Emails:
 
-  idemail1 -> Email1
-  idemail2 -> Email2
+  * idemail1 -> Email1
+  * idemail2 -> Email2
 
   Referencias:
 
-  francisco.fernandez.castano@gmail.com -> [idemail1, idemail2]
-  test@gmail.com -> [idemail1]
+  * francisco.fernandez.castano@gmail.com -> [idemail1, idemail2]
+  * test@gmail.com -> [idemail1]
 
 
 Por tanto en ningún momento nos encontramos con datos duplicados,
@@ -138,9 +138,9 @@ La configuración del servidor remoto se recoge en el fichero:
 
 Dependencias
 ------------
-*MongoDB
-*Redis
-*Ruby
+* MongoDB
+* Redis
+* Ruby
 
 Arrancar la aplicación
 ----------------------
@@ -155,13 +155,13 @@ En la carpeta specs/models hay unos test básicos de la aplicación.
 
 Código ajeno utilizado
 ----------------------
-*Rails
-*Bootstrap
-*mongo - mongodb ruby driver
-*bson - "Traductor" de documentos de mongo
-*redis - redis ruby driver
-*faraday - cliente http ruby
-*rspec - Framework de testing
+* Rails
+* Bootstrap
+* mongo - mongodb ruby driver
+* bson - "Traductor" de documentos de mongo
+* redis - redis ruby driver
+* faraday - cliente http ruby
+* rspec - Framework de testing
 
 Inspiración para usar el patrón repository de
 http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html
