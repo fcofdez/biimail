@@ -23,7 +23,7 @@ module Repositories
 
       def find_by_email(email)
         list_length = @client.llen(email)
-        @client.lrange(email, 0, list_length - 1)
+        @client.lrange(email, 0, list_length - 1).map{ |id| BSON::ObjectId(id) }
       end
     end
   end

@@ -2,7 +2,7 @@ class Server
 
   def initialize
     Repository.register(:emails, Repositories::Databases::Documents.new)
-    Repository.register(:user_email_references, Repositories::Memory::UserEmailReferences.new)
+    Repository.register(:user_email_references, Repositories::Databases::RedisReferences.new)
   end
 
   def send(email)
