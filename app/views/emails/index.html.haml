@@ -1,5 +1,9 @@
-hola
-%p= session[:user]
+-if @has_mails
+  %p= "You have #{@new_mails_length} new mails"
+  %p= link_to "Download emails", download_emails_path, class: "btn"
+- else
+  %p= "You have not new mails"
+
 %p= link_to "New Email", new_email_path, class: "btn"
 %table.table
   %tr

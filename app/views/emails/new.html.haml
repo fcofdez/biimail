@@ -1,0 +1,9 @@
+.span6
+  = form_tag emails_path do
+    .controls.controls-row
+      = text_field_tag :subject, "", class: "span3", placeholder: "Subject"
+      = text_field_tag :email, "", class: "span3", placeholder: "Email"
+    .controls
+      = text_area_tag :message, "", class: "span6", placeholder: "Your email"
+    .controls
+      = submit_tag "Send", class: "btn btn-primary input-medium pull-right"

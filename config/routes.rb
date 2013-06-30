@@ -51,7 +51,12 @@ Biiclient::Application.routes.draw do
   root :to => 'welcome#index'
 
   resources :sessions, only: [:create, :destroy]
-  resources :emails
+
+  resources :emails do
+    collection do
+      get "download"
+    end
+  end
 
   # See how all your routes lay out with "rake routes"
 
