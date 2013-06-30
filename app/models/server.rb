@@ -1,13 +1,8 @@
-require_relative '../../lib/repositories/memory/emails_repository'
-require_relative '../../lib/repositories/databases/documents_repository'
-require_relative '../../lib/repositories/memory/user_email_references_repository'
-require_relative '../../lib/repositories/repository'
-
 class Server
 
   def initialize
-    Repository.register(:emails, DatabaseRepository::DocumentRepository.new)
-    Repository.register(:user_email_references, MemoryRepository::UserEmailReferencesRepository.new)
+    Repository.register(:emails, Repositories::Databases::Documents.new)
+    Repository.register(:user_email_references, Repositories::Memory::UserEmailReferences.new)
   end
 
   def send(email)

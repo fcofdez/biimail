@@ -1,10 +1,7 @@
-require_relative '../../lib/repositories/databases/documents_repository'
-require_relative '../../lib/repositories/repository'
-
 class Client
 
   def initialize(email_address, server)
-    Repository.register(:user_emails, DatabaseRepository::DocumentRepository.new("emails", email_address))
+    Repository.register(:user_emails, Repositories::Databases::Documents.new("emails", email_address))
     @email_address = email_address
     @server = server
   end

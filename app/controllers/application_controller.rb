@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def is_user_signed_in?
+  def user_signed_in?
     session[:user].present?
   end
 

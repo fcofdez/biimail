@@ -19,6 +19,7 @@ class EmailsController < ApplicationController
 
   def download
     @client.download_new_emails
+    redirect_to emails_path
   end
 
   private
