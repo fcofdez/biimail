@@ -1,4 +1,6 @@
 = link_to "All emails", emails_path
 %h1= @email.subject
-%span= "From"
+From: 
+%span= @email.from
+%p= ""
 %p= @email.content

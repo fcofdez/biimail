@@ -1,7 +1,7 @@
 require_relative '../models/email'
 
 describe Email do
-  subject { Email.new(["test@test.com"], "Subject", "body test") }
+  subject { Email.new("me@me.com", ["test@test.com"], "Subject", "body test") }
 
   it "return 0 when nobody have downloaded it" do
     subject.downloaded_times.should == 0

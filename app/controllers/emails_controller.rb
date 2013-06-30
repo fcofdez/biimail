@@ -16,8 +16,8 @@ class EmailsController < ApplicationController
   end
 
   def create
-    receivers = params[:email].split(",")
-    @client.send_email(receivers, params[:subject], params[:message])
+    receivers = params[:email].split(",").map(&:strip)
+    @client.send_email(current_user, receivers, params[:subject], params[:message])
     redirect_to emails_path
   end
 

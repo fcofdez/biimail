@@ -3,10 +3,11 @@ require 'digest'
 
 class Email
 
-  attr_reader :subject, :content, :receivers, :date, :downloaded_times
+  attr_reader :subject, :content, :receivers, :date, :downloaded_times, :from
   attr_accessor :email_id
 
-  def initialize(receivers, subject, content, date = Time.now, email_id = nil, downloaded_times = 0)
+  def initialize(from, receivers, subject, content, date = Time.now, email_id = nil, downloaded_times = 0)
+    @from = from
     @receivers = receivers
     @subject = subject
     @content = content
@@ -17,12 +18,13 @@ class Email
 
   def self.new_from_hash(hash)
     receivers = hash["receivers"]
+    from = hash["from"]
     subject = hash["subject"]
     content = hash["content"]
     date = hash["date"]
     downloaded_times = hash["downloaded_times"]
     email_id = hash["_id"]
-    Email.new(receivers, subject, content, date, email_id, downloaded_times)
+    Email.new(from, receivers, subject, content, date, email_id, downloaded_times)
   end
 
   def all_users_downloaded?

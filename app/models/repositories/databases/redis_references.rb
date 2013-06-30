@@ -1,7 +1,7 @@
 module Repositories
   module Databases
     class RedisReferences
-      def initialize(db = "emails", collection = "emails")
+      def initialize
         @client = Redis.new
       end
 

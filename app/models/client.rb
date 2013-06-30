@@ -25,7 +25,7 @@ class Client
     downloaded_emails
   end
 
-  def send_email(receivers, subject, body)
-    @server.send(Email.new(receivers, subject, body))
+  def send_email(from, receivers, subject, body)
+    @server.send(Email.new(from, receivers, subject, body))
   end
 end

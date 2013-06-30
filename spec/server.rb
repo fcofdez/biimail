@@ -6,7 +6,7 @@ describe Server do
   subject { Server.new }
 
   it "Store emails" do
-    subject.send(Email.new(["test@test.com"], "test", "body test"))
+    subject.send(Email.new("me@me.com", ["test@test.com"], "test", "body test"))
     subject.new_mails("test@test.com").should_not == []
   end
 
@@ -15,7 +15,7 @@ describe Server do
   end
 
   it "#has_new_mail? check if user has new emails" do
-    subject.send(Email.new(["test@test.com"], "test", "body test"))
+    subject.send(Email.new("me@me.com", ["test@test.com"], "test", "body test"))
     subject.has_new_mail?("test@test.com").should be true
   end
 
@@ -24,7 +24,7 @@ describe Server do
   end
 
   it "fetch emails" do
-    subject.send(Email.new(["test@test.com"], "test", "body test"))
+    subject.send(Email.new("me@me.com", ["test@test.com"], "test", "body test"))
     subject.fetch("test@test.com", subject.new_mails("test@test.com").first)
     subject.has_new_mail?("test@test.com").should be false
   end
