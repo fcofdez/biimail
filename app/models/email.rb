@@ -27,6 +27,10 @@ class Email
     Email.new(from, receivers, subject, content, date, email_id, downloaded_times)
   end
 
+  def self.new_from_response(response)
+    Email.new(response.from, response.receivers, response.subject, response.content, response.date, "", response.downloaded_times)
+  end
+
   def all_users_downloaded?
     @downloaded_times == @receivers.length
   end

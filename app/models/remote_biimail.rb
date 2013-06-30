@@ -35,6 +35,12 @@ module RemoteBiimail
         request.params.update(params) if params
       end
     end
+
+    def post(path, params = nil)
+      connection.post(path) do |request|
+        request.params.update(params) if params
+      end
+    end
   end
 
   module ApiMethods
@@ -44,8 +50,27 @@ module RemoteBiimail
       raw ? response.env[:raw_body] : response.body
     end
 
+    def post(path, params = nil)
+      raw = params && params.delete(:raw)
+      response = super
+      raw ? response.env[:raw_body] : response.body
+    end
+
     def fetch_mail(receiver, id)
-      get("emails/#{id}")
+      response = get("emails/#{id}")
+      Email.new_from_response(response)
+    end
+
+    def has_new_mail?(receiver)
+      get("emails/has_new_mail", receiver: receiver)
+    end
+
+    def new_mails(receiver)
+      get("emails/new_mails", receiver: receiver)
+    end
+
+    def send(email)
+      post("emails", email.to_hash)
     end
   end
 
