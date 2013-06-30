@@ -38,12 +38,12 @@ valor una lista con los ids de los diferentes mails que han recibido.
 
 Por ejemplo:
 
-  Emails:
+Emails:
 
   * idemail1 -> Email1
   * idemail2 -> Email2
 
-  Referencias:
+Referencias:
 
   * francisco.fernandez.castano@gmail.com -> [idemail1, idemail2]
   * test@gmail.com -> [idemail1]
