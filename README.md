@@ -149,6 +149,9 @@ Nos situamos en el directorio de la aplicación y ejecutamos
   bundle install
   rails s
 
+Tests
+-----
+En la carpeta specs/models hay unos test básicos de la aplicación.
 
 Código ajeno utilizado
 ----------------------
