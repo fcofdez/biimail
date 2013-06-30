@@ -1,0 +1,12 @@
+hola
+%p= session[:user]
+%p= link_to "New Email", new_email_path, class: "btn"
+%table.table
+  %tr
+    %th Source
+    %th Subject
+    - @emails.each do |email|
+      %tr
+        %td= email.source
+        %td= email.subject
+

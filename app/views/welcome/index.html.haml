@@ -1,6 +1,6 @@
 .hero-unit
   %h2 Biimail system
-  = form_tag session_path do
+  = form_tag sessions_path do
     = label_tag "Email"
     = text_field_tag :email
     = submit_tag "Login", class: "btn"
